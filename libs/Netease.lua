@@ -7,6 +7,8 @@ return {
   local json = HttpService:JSONDecode(res)
    print(#json)
    print(res)
+    print(#json.result)
+     print(#json.result.songs)
    return json.result.songs
    
    end,
