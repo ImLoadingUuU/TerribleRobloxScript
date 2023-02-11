@@ -2457,9 +2457,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			ArrowIco.Selectable = true
 			ArrowIco.Size = UDim2.new(0, 28, 0, 24)
 			ArrowIco.Image = "http://www.roblox.com/asset/?id=6034818372"
-			
-			TextBox.FocusLost:Connect(
-				function(ep)
+			function applyChanges(ep)
 					if ep then
 						if #TextBox.Text > 0 then
 							pcall(callback, TextBox.Text)
@@ -2469,7 +2467,8 @@ function Flux:Window(text, bottom,mainclr,toclose)
 						end
 					end
 				end
-			)
+			TextBox.Changed:Connect(applyChanges)
+			TextBox.FocusLost:Connect(applyChanges)
 			
 			ArrowBtn.MouseButton1Click:Connect(function()
 				if TextboxDescToggled == false then
