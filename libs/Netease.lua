@@ -5,7 +5,10 @@ return {
 
   local res = game:HttpGet("https://neteaseapi.imloadinguuu.repl.co/search?keywords=" .. keyWord)
   local json = HttpService:JSONDecode(res)
+   print(#json)
+   print(res)
    return json.result.songs
+   
    end,
   getLyrics = function(id) 
      
